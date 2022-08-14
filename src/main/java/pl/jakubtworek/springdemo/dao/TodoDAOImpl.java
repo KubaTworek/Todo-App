@@ -33,9 +33,7 @@ public class TodoDAOImpl implements TodoDAO{
     @Override
     public void saveTodo(Todo theTodo) {
         Session currentSession = sessionFactory.getCurrentSession();
-        System.out.println(theTodo.getId());
         currentSession.saveOrUpdate(theTodo);
-        System.out.println(theTodo.getId());
     }
 
     @Override

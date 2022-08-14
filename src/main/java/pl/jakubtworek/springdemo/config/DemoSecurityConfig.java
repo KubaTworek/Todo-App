@@ -28,7 +28,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/todo/showFormForAdd/**").hasRole("ADMIN")
-                .antMatchers("/").permitAll()
+                .antMatchers("/api/customers/**").authenticated()
                 .and()
                 .formLogin()
                 .and()
@@ -36,5 +36,6 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
+        http.csrf().disable();
     }
 }
